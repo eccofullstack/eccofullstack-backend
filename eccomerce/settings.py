@@ -182,9 +182,22 @@ else:
     MEDIA_URL = 'https://res.cloudinary.com/{}/'.format(os.getenv("CLOUD_NAME"))
 
 
-CLOUD_NAME= os.getenv("CLOUD_NAME")
-API_KEY= os.getenv("API_KEY")
-API_SECRET= os.getenv("API_SECRET")
+# Cargar las variables de entorno correctamente
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.getenv("CLOUD_NAME"),
+    "API_KEY": os.getenv("API_KEY"),
+    "API_SECRET": os.getenv("API_SECRET"),
+}
+
+# Validar que las credenciales existen antes de configurar Cloudinary
+if all(CLOUDINARY_STORAGE.values()):
+    cloudinary.config(
+        cloud_name=CLOUDINARY_STORAGE["CLOUD_NAME"],
+        api_key=CLOUDINARY_STORAGE["API_KEY"],
+        api_secret=CLOUDINARY_STORAGE["API_SECRET"],
+    )
+else:
+    raise ValueError("Cloudinary API credentials are missing. Check your .env file.")
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
