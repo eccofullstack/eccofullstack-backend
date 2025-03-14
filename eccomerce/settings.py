@@ -168,7 +168,7 @@ if not DEBUG:
 
 
 # Archivos de medios (Imágenes y otros archivos subidos por el usuario)
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Carpeta donde se guardarán los archivos subidos
 
 # Default primary key field type
