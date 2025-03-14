@@ -19,7 +19,7 @@ class Label(models.Model):
 class Product(models.Model):
     name = models.CharField('Name', max_length=50,blank=False,null=False)
     description = models.TextField('Description')
-    price = models.DecimalField('Price', max_digits=9999999, decimal_places=2)
+    price = models.DecimalField('Price', max_digits=1000, decimal_places=2)
     stock = models.IntegerField('Stock')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/images')
