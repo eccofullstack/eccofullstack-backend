@@ -3,6 +3,8 @@ from .models import Category, Product, Label
 import cloudinary.utils
 
 class CategorySerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()  # Generar URL completa de la imagen
+
     class Meta:
         model = Category
         fields = '__all__'
