@@ -5,6 +5,12 @@ from dotenv import load_dotenv
 import dj_database_url
 load_dotenv()
 
+import mimetypes
+mimetypes.add_type("image/webp", ".webp", True)
+mimetypes.add_type("image/jpeg", ".jpg", True)
+mimetypes.add_type("image/png", ".png", True)
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
