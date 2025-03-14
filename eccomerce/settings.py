@@ -160,7 +160,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 if not DEBUG:
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -168,7 +170,7 @@ if not DEBUG:
 
 
 # Archivos de medios (Imágenes y otros archivos subidos por el usuario)
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Carpeta donde se guardarán los archivos subidos
 
 # Default primary key field type
