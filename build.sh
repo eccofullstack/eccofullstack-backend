@@ -8,6 +8,8 @@ export $(grep -v '^#' .env | xargs)
 # Instalar dependencias
 pip install -r requirements.txt
 
+python manage.py collectstatic --noinput
+
 # Ejecutar migraciones
 python manage.py migrate
 
