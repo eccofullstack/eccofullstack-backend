@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from cloudinary.models import CloudinaryField
 
 User = get_user_model()
 
@@ -25,7 +26,7 @@ class Blog(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     published_date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='blog/', blank=True, null=True)
+    image = CloudinaryField('blog', folder='blog/', blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     categories = models.ManyToManyField(Category, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
